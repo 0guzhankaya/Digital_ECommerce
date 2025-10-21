@@ -6,7 +6,7 @@ namespace Digital_Domain_Layer.Entities
 	public class Order : BaseEntity
 	{
 		[ForeignKey(nameof(User))]
-		public Guid UserId { get; set; }
+		public string UserId { get; set; }
 		public virtual User User { get; set; }
 
 		[ForeignKey(nameof(Checkout))]
