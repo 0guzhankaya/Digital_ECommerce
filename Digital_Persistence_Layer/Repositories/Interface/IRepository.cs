@@ -1,0 +1,17 @@
+﻿using Digital_Domain_Layer.Extensions;
+using System.Linq.Expressions;
+
+namespace Digital_Persistence_Layer.Repositories.Interface
+{
+	public interface IRepository<T> where T : new()
+	{
+		Task<T> GetById(Guid id);
+		Task<IEnumerable<T>> GetAll();
+		Task<T> Add(T entity);
+		Task<T> Update(Guid id, T entity);
+		Task Delete(Guid id);
+		Task<PageResult<T>> GetPagedResult(Expression<Func<T, bool>>? filter = null,
+			Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+			int pageNumber = 1, int pageSize = 10);
+	}
+}
