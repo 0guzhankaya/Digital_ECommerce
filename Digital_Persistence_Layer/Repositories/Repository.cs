@@ -90,6 +90,21 @@ namespace Digital_Persistence_Layer.Repositories
 			};
 		}
 
+		public async Task<IEnumerable<T>> GetWithIncludeProperties(params Expression<Func<T, object>>[] includeProperties)
+		{
+			var query = Table.AsQueryable();
+
+			if (includeProperties.Length > 0)
+			{
+				foreach (var item in includeProperties)
+				{
+					query = query.Include(item);
+				}
+			}
+
+			return query.AsEnumerable();
+		}
+
 		public Task<bool> IsAnyItem(Expression<Func<T, bool>> filter)
 		{
 			IQueryable<T> query = Table.AsQueryable();

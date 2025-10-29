@@ -16,6 +16,7 @@ namespace Digital_Core_Layer
 			services.AddPersistenceServiceRegistration(configuration);
 			services.AddScoped<IUserService, UserService>();
 			services.AddScoped<IMainCategoryService, MainCategoryService>();
+			services.AddScoped<ISubCategoryService, SubCategoryService>();
 			services.AddDbContext<Digital_Persistence_Layer.AppDbContext.ApplicationDbContext>(options =>
 			{
 				options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"));

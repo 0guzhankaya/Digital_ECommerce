@@ -15,6 +15,7 @@ namespace Digital_Persistence_Layer
 			services.AddScoped(typeof(BaseResponseModel));
 			services.AddScoped<IUserRepository, UserRepository>();
 			services.AddScoped<IMainCategoryRepository, MainCategoryRepository>();
+			services.AddScoped<ISubCategoryRepository, SubCategoryRepository>();
 			services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 			services.AddInfrastructureLayerServices(configuration);
 			services.AddAutoMapper(typeof(MapperProfile));

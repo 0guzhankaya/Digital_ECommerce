@@ -39,7 +39,7 @@ namespace Digital_Persistence_Layer.Repositories
 
 		public async Task<BaseResponseModel> GetAllMainCategories()
 		{
-			var result = await GetAll();
+			var result = await GetWithIncludeProperties(x => x.SubCategories);
 
 			if (result is null || !result.Any())
 			{

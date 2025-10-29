@@ -9,6 +9,7 @@ namespace Digital_Persistence_Layer.MappingProfiles
 		public MapperProfile()
 		{
 			CreateMap<MainCategoryDto, MainCategory>().ReverseMap();
+			CreateMap<SubCategoryDto, SubCategory>().ReverseMap();
 		}
 	}
 }

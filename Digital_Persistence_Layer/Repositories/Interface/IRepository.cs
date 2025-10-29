@@ -14,5 +14,7 @@ namespace Digital_Persistence_Layer.Repositories.Interface
 		Task<PageResult<T>> GetPagedResult(Expression<Func<T, bool>>? filter = null,
 			Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
 			int pageNumber = 1, int pageSize = 10);
+
+		Task<IEnumerable<T>> GetWithIncludeProperties(params Expression<Func<T, object>>[] includeProperties);
 	}
 }
