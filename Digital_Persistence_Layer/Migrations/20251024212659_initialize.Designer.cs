@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Digital_Persistence_Layer.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20251021190226_init")]
-    partial class init
+    [Migration("20251024212659_initialize")]
+    partial class initialize
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -242,10 +242,6 @@ namespace Digital_Persistence_Layer.Migrations
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
-                        .HasColumnType("text");
-
-                    b.Property<string>("ConfirmPassword")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Email")

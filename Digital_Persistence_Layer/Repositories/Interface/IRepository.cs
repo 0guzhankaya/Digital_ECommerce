@@ -6,6 +6,7 @@ namespace Digital_Persistence_Layer.Repositories.Interface
 	public interface IRepository<T> where T : new()
 	{
 		Task<T> GetById(Guid id);
+		Task<bool> IsAnyItem(Expression<Func<T, bool>> filter);
 		Task<IEnumerable<T>> GetAll();
 		Task<T> Add(T entity);
 		Task<T> Update(Guid id, T entity);

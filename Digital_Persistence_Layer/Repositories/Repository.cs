@@ -90,6 +90,18 @@ namespace Digital_Persistence_Layer.Repositories
 			};
 		}
 
+		public Task<bool> IsAnyItem(Expression<Func<T, bool>> filter)
+		{
+			IQueryable<T> query = Table.AsQueryable();
+
+			if (filter is not null)
+			{
+				query = query.Where(filter);
+			}
+
+			return query.AnyAsync();
+		}
+
 		public async Task<T> Update(Guid id, T entity)
 		{
 			var existingEntity = await Table.FindAsync(id);
