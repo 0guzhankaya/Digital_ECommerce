@@ -7,7 +7,10 @@ namespace Digital_Domain_Layer.Entities
 	{
 		public string CategoryName { get; set; }
 		public string CategoryDescription { get; set; }
-		public virtual ICollection<MainCategory> MainCategory { get; set; }
+
+		[ForeignKey(nameof(MainCategory))]
+		public Guid MainCategoryId { get; set; }
+		public virtual MainCategory MainCategory { get; set; }
 		public virtual ICollection<Product> Products { get; set; }
 	}
 }
