@@ -29,6 +29,18 @@ namespace Digital_Persistence_Layer.Repositories
 			return null;
 		}
 
+		public async Task<List<T>> AddRange(List<T> entities)
+		{
+			await Table.AddRangeAsync(entities);
+
+			if (await _context.SaveChangesAsync() > 0)
+			{
+				return entities;
+			}
+
+			return null;
+		}
+
 		public async Task Delete(Guid id)
 		{
 			var entity = await Table.FindAsync(id);
@@ -88,6 +100,25 @@ namespace Digital_Persistence_Layer.Repositories
 				PageNumber = pageNumber,
 				PageSize = pageSize
 			};
+		}
+
+		public async Task<T> GetWhere(Expression<Func<T, bool>> filter = null, params Expression<Func<T, object>>[] includeProperties)
+		{
+			IQueryable<T> query = Table.AsQueryable();
+			if (filter is not null)
+			{
+				query = query.Where(filter);
+			}
+
+			if (includeProperties.Length > 0)
+			{
+				foreach (var item in includeProperties)
+				{
+					query = query.Include(item);
+				}
+			}
+
+			return query.FirstOrDefaultAsync().Result!;
 		}
 
 		public async Task<IEnumerable<T>> GetWithIncludeProperties(params Expression<Func<T, object>>[] includeProperties)

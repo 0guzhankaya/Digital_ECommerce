@@ -51,7 +51,8 @@ namespace Digital_Persistence_Layer.Repositories
 
 		public async Task<BaseResponseModel> GetProductById(Guid id)
 		{
-			Product product = await GetById(id);
+			Product product = await GetWhere(x => x.Id == id, x => x.ProductImages);
+
 			var objMap = _mapper.Map<ProductDto>(product);
 
 			return new BaseResponseModel
