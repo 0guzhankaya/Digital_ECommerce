@@ -16,6 +16,5 @@ namespace Digital_Domain_Layer.Entities
 		[ForeignKey(nameof(SubCategory))]
 		public Guid SubCategoryId { get; set; }
 		public virtual SubCategory SubCategory { get; set; }
-		public virtual ICollection<Cart> Carts { get; set; }
 	}
 }

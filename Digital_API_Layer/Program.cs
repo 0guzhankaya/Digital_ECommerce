@@ -9,6 +9,7 @@ builder.Services.AddCoreRegisterServices(builder.Configuration);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 
@@ -22,7 +23,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
-app.UseAuthorization();
+app.UseAuthentication(); // Roles and Authentication Middleware
+app.UseAuthorization();  // Policies and Authorization Middleware
 
 app.MapControllers();
 

@@ -19,6 +19,7 @@ namespace Digital_Core_Layer
 			services.AddScoped<ISubCategoryService, SubCategoryService>();
 			services.AddScoped<IProductService, ProductService>();
 			services.AddScoped<IProductImageService, ProductImageService>();
+			services.AddScoped<IShoppingCartService, ShoppingCartService>();
 			services.AddDbContext<Digital_Persistence_Layer.AppDbContext.ApplicationDbContext>(options =>
 			{
 				options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"));
